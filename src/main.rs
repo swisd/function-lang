@@ -6,7 +6,7 @@ use std::fs;
 
 use pest::Parser;
 use pest_derive::Parser;
-use crate::Stmt::Expr;
+// use crate::Stmt::Expr;
 
 struct State {
     vars: HashMap<String, f64>,
