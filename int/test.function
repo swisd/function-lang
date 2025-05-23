@@ -1,6 +1,8 @@
-x = 10
+a = 10
 y = 5
-z = sin(x)
+z = sin(a)
 w = cos(y)
-
-f(a) = (a^2) - 2
+f(x) = (x^2) - x
+f(3)
+dadd(3, 4)
+dsub(3, 2)

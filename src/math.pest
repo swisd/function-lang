@@ -1,0 +1,27 @@
+WHITESPACE      = _{ " " | "\t" | "\r" | "\n" }
+
+program         =  { SOI ~ statement* ~ EOI }
+
+statement    = _{ assignment | function_def | print_stmt | expression }
+assignment      =  { ident ~ "=" ~ expression }
+function_def = { ident ~ "(" ~ ident_list ~ ")" ~ "=" ~ expression }
+print_stmt  = { "print" ~ "(" ~ expression ~ ")" }
+
+
+expression      =  { sum }
+sum             =  { product ~ (("+" | "-") ~ product)* }
+product         =  { power   ~ (("*" | "/") ~ power)* }
+power           =  { unary   ~ ("^" ~ power)? }
+unary           =  { ("+" | "-")? ~ primary }
+primary         =  { number
+                  | function_call
+                  | ident
+                  | "(" ~ expression ~ ")"
+                  }
+
+function_call   =  { ident ~ "(" ~ expression_list? ~ ")" }
+expression_list =  { expression ~ ("," ~ expression)* }
+ident_list      =  { ident      ~ ("," ~ ident     )* }
+
+ident           = @{ ASCII_ALPHA ~ (ASCII_ALPHANUMERIC | "_")* }
+number          = @{ ASCII_DIGIT+ ~ ("." ~ ASCII_DIGIT+)? }
