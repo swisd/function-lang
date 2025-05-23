@@ -1,4 +1,5 @@
 mod differential;
+mod dmath;
 
 use std::collections::HashMap;
 use std::io::{self, Write};
